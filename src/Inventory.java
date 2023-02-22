@@ -32,8 +32,7 @@ public class Inventory implements Checkable {
                         int a = Period.between(products[i].getMadeOfDate(), LocalDate.now()).getDays();
                         if (a >= 10) {
                             System.out.println("Expired goods!\n" + products[i].toString());
-                        }
-                        if (a < 9) {
+                        } else if (a < 9) {
                             System.out.println(products[i].toString());
                         }
                     }
@@ -42,11 +41,10 @@ public class Inventory implements Checkable {
             case "ELECTRONIC" -> {
                 for (int i = 0; i < products.length; i++) {
                     if (products[i].getTypeProductString().equals("ELECTRONIC")) {
-                        int a = Period.between(products[i].getMadeOfDate(), LocalDate.now()).getYears();
-                        if (a >= 6) {
-                            System.out.println("Expired goods!\n" + products[i].toString());
-                        }
-                        if (a < 5) {
+                        int b = Period.between(products[i].getMadeOfDate(), LocalDate.now()).getMonths();
+                        if (b >= 6) {
+                            System.out.println("50% Sale\n" + products[i].toString());
+                        } else if (b < 5) {
                             System.out.println(products[i].toString());
                         }
                     }
@@ -65,7 +63,31 @@ public class Inventory implements Checkable {
 
     @Override
     public void searchProductName(String searchName) {
-        
+        for (Product product : products) {
+            if (product.getName().toUpperCase().equals(searchName)) {
+                if (product.getTypeProductString().equals("VEGETABLES")) {
+                    int a = Period.between(product.getMadeOfDate(), LocalDate.now()).getDays();
+                    if (a >= 10) {
+                        System.out.println("Expired goods!\n" + product.toString());
+                    }
+                    if (a < 9) {
+                        System.out.println(product.toString());
+                    }
+                } else if (product.getTypeProductString().equals("ELECTRONIC")) {
+                    int a = Period.between(product.getMadeOfDate(), LocalDate.now()).getMonths();
+                    if (a >= 6) {
+                        System.out.println("Expired goods!\n" + product.toString());
+                    }
+                    if (a < 5) {
+                        System.out.println(product.toString());
+                    }
+                } else if (product.getTypeProductString().equals("CLOTHES")) {
+                    System.out.println(product.toString());
+                }
+
+            }
+        }
+
     }
 
 

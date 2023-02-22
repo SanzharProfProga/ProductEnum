@@ -6,8 +6,7 @@ import java.time.Period;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         Product product = new Product("Apple","Apple from Yssyk Kol",new BigDecimal(100), LocalDate.of(2023,2,2),
                 TypeProduct.VEGETABLES);
         Product product1 = new Product("Green bean","Green bean from Talas",new BigDecimal(130),LocalDate.of(2023,2,18),
@@ -44,7 +43,6 @@ public class Main {
                     System.out.println("Enter a request");
                     String enterARequest = new Scanner(System.in).nextLine().toUpperCase();
                     inventory.searchProductType(enterARequest);
-
                 }
             }
         }
